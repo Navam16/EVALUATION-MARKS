@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: participation-evaluator-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    rootDir: backend
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://your-app.vercel.app
